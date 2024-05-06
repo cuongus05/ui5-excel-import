@@ -1,0 +1,16 @@
+{
+  "name": "my-products",
+  "private": true,
+  "version": "1.0.0",
+  "author": "SAP SE",
+  "description": "UI5 Demo App - My Products",
+  "scripts": {
+    "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
+    "start": "fiori run --open \"test/mockServer.html?sap-ui-xx-viewCache=false#ui5myproducts-display\""
+  },
+  "devDependencies": {
+    "@sap-ux/ui5-middleware-fe-mockserver": "^2.2.34",
+    "@sap/ux-ui5-tooling": "^1.13.0",
+    "@ui5/cli": "^3"
+  }
+}

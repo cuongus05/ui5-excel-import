@@ -1,0 +1,74 @@
+<mvc:View
+	controllerName="sap.ui.demo.MockServer.controller.App"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+	<Shell>
+		<App>
+			<Page title="Products">
+				<Table id="list" items="{/Products}">
+					<headerToolbar>
+						<Toolbar>
+							<Title text="My Products" />
+							<ToolbarSpacer />
+							<core:ComponentContainer
+								usage="spreadsheetImporter"
+								propagateModel="true"
+								async="true"
+								settings="{
+									columns: ['ProductId', 'Name', 'SupplierName', 'DateOfSale', 'Quantity', 'Price', 'CurrencyCode'],
+									spreadsheetFileName: 'products_template.xlsx',
+									mandatoryFields: ['CurrencyCode'],
+									strict: true,
+									standalone: true,
+									componentContainerData: {
+										buttonText: 'Excel Uplaod',
+										checkBeforeRead: 'checkBeforeRead',
+										changeBeforeCreate: 'changeBeforeCreate',
+										uploadButtonPress: 'uploadButtonPress'
+									}
+								}" />
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column>
+							<Text text="Product ID" />
+						</Column>
+						<Column width="20%">
+							<Text text="Name" />
+						</Column>
+						<Column>
+							<Text text="Supplier" />
+						</Column>
+						<Column>
+							<Text text="Date of Sale" />
+						</Column>
+						<Column hAlign="End">
+							<Text text="Quantity" />
+						</Column>
+						<Column hAlign="End">
+							<Text text="Price" />
+						</Column>
+						<Column>
+							<Text text="Currency" />
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Input value="{ProductId}" />
+								<Input value="{Name}" />
+								<Input value="{SupplierName}" />
+								<DatePicker dateValue="{DateOfSale}" />
+								<Input type="Number" textAlign="End" value="{Quantity}"/>
+								<Input type="Number" textAlign="End" value="{Price}"/>
+								<Input value="{CurrencyCode}" />
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</Page>
+		</App>
+	</Shell>
+</mvc:View>
